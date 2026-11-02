@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Deepika Murthy</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Deepika Murthy - M.Sc. Machine Learning and Data Analytics student in Aalen. Computer vision, LLM applications and honest model evaluation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: a personal portfolio that opens with a hello and a live demo the recruiter can play with, then projects filterable by field. */
+:root{
+  --bg:#fafafb; --surface:#ffffff; --fg:#0c0e12; --muted:#636b78; --line:#e3e6eb; --dot:#d5d9e0;
+  --accent:#2a55e6; --accent-soft:#eaefff; --base:#b0532a; --good:#1f7a4d; --ink-on-accent:#ffffff;
+  --display:"Geist", "Segoe UI", system-ui, sans-serif;
+  --body:"Geist", "Segoe UI", system-ui, sans-serif;
+  --mono:"Geist Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0a0c10; --surface:#11141a; --fg:#e8ebf0; --muted:#8f98a5; --line:#232833; --dot:#1c212a;
+  --accent:#7d9bff; --accent-soft:#18213d; --base:#e58e61; --good:#5fc993; --ink-on-accent:#0a0c10; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0a0c10; --surface:#11141a; --fg:#e8ebf0; --muted:#8f98a5; --line:#232833; --dot:#1c212a;
+  --accent:#7d9bff; --accent-soft:#18213d; --base:#e58e61; --good:#5fc993; --ink-on-accent:#0a0c10; color-scheme:dark}
+
+*{box-sizing:border-box} html,body{margin:0}
+body{background-color:var(--bg);background-image:radial-gradient(var(--dot) 1px, transparent 1px);background-size:22px 22px;color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.wrap{max-width:1040px;margin:0 auto}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1;letter-spacing:-.02em}
+p{margin:0}
+.muted{color:var(--muted)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;padding-block:72px 48px;align-items:end}
+.hero .hi{font-family:var(--mono);font-size:14px;color:var(--muted);letter-spacing:.04em}
+.hero .hi .caret{display:inline-block;width:8px;height:15px;background:var(--accent);vertical-align:-2px;margin-left:4px}
+.hero h1{font-size:clamp(44px,7.6vw,80px);font-weight:600;letter-spacing:-.045em;margin-top:10px}
+.hero .intro{font-size:18px;margin-top:22px;max-width:46ch;display:grid;gap:12px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{font:500 14px var(--mono);border-radius:4px;padding:10px 18px;cursor:pointer;text-decoration:none;border:1.5px solid var(--fg);color:var(--fg);background:transparent}
+.btn.primary{background:var(--fg);color:var(--bg)}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary:hover{background:var(--accent);color:var(--ink-on-accent)}
+.facts{border-left:2px solid var(--line);padding-left:22px;display:grid;gap:14px;font-size:15px}
+.facts b{display:block;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.live{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;color:var(--good)}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--good);position:relative}
+.live i::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--good)}
+
+/* Sections */
+section{border-top:1px solid var(--line);padding-block:56px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.sec-head h2{font-size:clamp(26px,4vw,36px);font-weight:600}
+.sec-head .idx{display:block;font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:.08em;color:var(--accent);margin-bottom:8px}
+.sec-head p{max-width:52ch}
+
+/* Demo */
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:22px;display:grid;gap:20px}
+.panels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.panel{display:grid;gap:8px;min-width:0}
+.scan{position:relative;overflow:hidden;border-radius:4px}
+.scan::after{content:"";position:absolute;left:0;right:0;height:22%;top:-22%;background:linear-gradient(to bottom,transparent,rgba(125,155,255,.28),transparent);pointer-events:none}
+.panel canvas{width:100%;max-width:100%;aspect-ratio:1;display:block;border-radius:6px;image-rendering:pixelated;background:#000}
+.panel span{font-size:13px;color:var(--muted)}
+.controls{display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center}
+.control{display:grid;gap:4px;font-size:14px;font-weight:600}
+.control input[type=range]{width:220px;max-width:100%;accent-color:var(--accent)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;padding:3px;gap:2px}
+.seg button{font:600 13px var(--body);border:0;background:transparent;color:var(--muted);padding:6px 14px;border-radius:3px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--fg);color:var(--bg)}
+.score{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:baseline;border-top:1px dashed var(--line);padding-top:16px}
+.score .big{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:30px;font-weight:600}
+.score .lbl{font-size:13px;color:var(--muted)}
+.demo .fine{font-size:13px;color:var(--muted);max-width:75ch}
+
+/* Projects */
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font:500 13px var(--mono);border:1px solid var(--line);background:var(--bg);color:var(--fg);padding:6px 12px;border-radius:4px;cursor:pointer}
+.filters button[aria-pressed=true]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.project{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px;padding-block:32px;border-top:1px dashed var(--line)}
+.projects .project:first-child{border-top:0}
+.project h3{font-size:24px;font-weight:600}
+.project .meta{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 0 14px;font-size:14px}
+.project .meta .date{color:var(--muted)}
+.tag{font-family:var(--mono);font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:1px 8px}
+.headline{font-family:var(--display);font-size:19px;font-weight:500;line-height:1.35;margin-bottom:12px}
+.headline strong{color:var(--accent)}
+.project ul{margin:0;padding-left:20px;display:grid;gap:8px}
+.stack{margin-top:14px;font-size:13px;color:var(--muted)}
+details{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
+summary{cursor:pointer;font-weight:600;color:var(--accent)}
+details p{margin-top:8px;font-size:15px}
+.aside{display:grid;gap:12px;align-content:start;min-width:0}
+.note{font-size:14px;color:var(--muted);border-left:2px solid var(--base);padding-left:12px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:12px}
+.stat .n{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:22px;font-weight:600}
+.stat .t{font-size:12.5px;color:var(--muted);line-height:1.4}
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:12px;overflow-x:auto}
+.chart svg{display:block;width:100%;height:auto;min-width:300px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12.5px;color:var(--muted);padding:6px 4px 0}
+.legend i{display:inline-block;width:14px;height:3px;vertical-align:middle;margin-right:6px;border-radius:2px}
+.empty{color:var(--muted);padding-block:20px}
+
+/* Background */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+.col-title{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.item{display:grid;gap:2px;margin-bottom:22px}
+.item .top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.item b{font-weight:600}
+.item .when{font-size:14px;color:var(--muted);white-space:nowrap}
+.item p{margin-top:6px;font-size:15px}
+.skills{display:grid;gap:12px}
+.skills div{display:grid;grid-template-columns:190px minmax(0,1fr);gap:16px}
+.skills .k{font-weight:600}
+.skills .v{color:var(--muted)}
+
+/* Contact */
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:28px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center}
+.contact h2{font-size:clamp(26px,4vw,36px)}
+.contact .mail{font-family:var(--mono);font-size:clamp(15px,2.4vw,20px);user-select:all;word-break:break-all;margin-top:10px}
+footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
+
+@media (max-width:820px){
+  .hero,.project,.two{grid-template-columns:minmax(0,1fr);gap:28px}
+  .hero{padding-block:44px 36px}
+  .facts{border-left:0;border-top:2px solid var(--line);padding-left:0;padding-top:18px}
+  .skills div{grid-template-columns:minmax(0,1fr);gap:2px}
+  .contact{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:520px){ .panels{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px} .demo{padding:14px} .stats{grid-template-columns:minmax(0,1fr) minmax(0,1fr)} }
+@media (prefers-reduced-motion:no-preference){
+  .btn,.filters button,.seg button,.project{transition:background .15s,color .15s,border-color .15s,transform .2s}
+  .btn:hover{transform:translateY(-1px)}
+  .hero .hi .caret{animation:blink 1.1s steps(1) infinite}
+  .live i::after{animation:ping 1.8s ease-out infinite}
+  .rise{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .rise.d1{animation-delay:.08s}.rise.d2{animation-delay:.16s}.rise.d3{animation-delay:.24s}.rise.d4{animation-delay:.32s}
+  .scan::after{animation:scan 3.2s linear infinite}
+  .draw polyline{stroke-dasharray:900;animation:draw 1.6s ease-out both}
+  .draw polyline.dashed{animation:none}
+  .project.enter{animation:rise .45s cubic-bezier(.2,.7,.2,1) both}
+  .stat:hover{border-color:var(--accent)}
+}
+@keyframes blink{50%{opacity:0}}
+@keyframes ping{0%{transform:scale(1);opacity:.6}100%{transform:scale(3);opacity:0}}
+@keyframes rise{from{transform:translateY(10px);opacity:.15}to{transform:none;opacity:1}}
+@keyframes scan{to{top:100%}}
+@keyframes draw{from{stroke-dashoffset:900}to{stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+<header class="hero">
+  <div>
+    <div class="hi rise">~/aalen $ whoami<span class="caret" aria-hidden="true"></span></div>
+    <h1 class="rise d1" id="name">Deepika Murthy</h1>
+    <div class="intro rise d2">
+      <p style="font-size:20px;font-weight:500">Machine learning student who builds computer vision and LLM projects end to end, and tests them before trusting them.</p>
+      <p>I'm in the M.Sc. Machine Learning and Data Analytics at Hochschule Aalen, with a software background from my Bachelor of Computer Applications.</p>
+      <p>At Lenovo I fixed operating-system, driver and firmware problems by ruling out one cause at a time. I bring the same habit to ML: a simple baseline first, tests for data leakage, and an honest note on what did not work.</p>
+    </div>
+    <div class="cta rise d3">
+      <a class="btn primary" href="#demo">Try my defect detector</a>
+      <a class="btn" href="#projects">See projects</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </div>
+  <div class="facts rise d4">
+    <span class="live"><i></i>Open to work</span>
+    <div><b>Looking for</b>Working-student roles, internships or a Master's thesis in ML and AI</div>
+    <div><b>Based in</b>Aalen, Germany. Student residence permit, work permitted</div>
+    <div><b>Languages</b>English C1, German A2 and improving</div>
+    <div><b>Elsewhere</b><a href="https://github.com/deeepiizz" target="_blank" rel="noopener">GitHub</a> &middot; <a href="https://www.linkedin.com/in/deepika-murthy-71686921b" target="_blank" rel="noopener">LinkedIn</a></div>
+  </div>
+</header>
+
+<section id="demo" aria-labelledby="demo-h">
+  <div class="sec-head">
+    <h2 id="demo-h"><span class="idx">01 / live demo</span>Can you break my detector?</h2>
+    <p class="muted">Turn up the noise and watch the anomaly map. Then switch on the median filter and see how much it recovers.</p>
+  </div>
+  <div class="demo">
+    <div class="panels">
+      <div class="panel"><canvas id="c-in" width="96" height="96" aria-label="Noisy surface image with a defect"></canvas><span>What the camera sees</span></div>
+      <div class="panel"><canvas id="c-gt" width="96" height="96" aria-label="True defect location"></canvas><span>Where the defect really is</span></div>
+      <div class="panel"><div class="scan"><canvas id="c-map" width="96" height="96" aria-label="Anomaly map from the detector"></canvas></div><span>What the detector flags</span></div>
+    </div>
+    <div class="controls">
+      <label class="control" for="noise">Camera noise: <span class="num" id="noise-val">0.10</span>
+        <input type="range" id="noise" min="0" max="0.3" step="0.01" value="0.10">
+      </label>
+      <div class="control"><span>Median filter</span>
+        <div class="seg" role="group" aria-label="Median filter">
+          <button type="button" id="f-off" aria-pressed="true">Off</button>
+          <button type="button" id="f-on" aria-pressed="false">On</button>
+        </div>
+      </div>
+      <div class="control"><span>Defect</span>
+        <div class="seg" role="group" aria-label="Defect type">
+          <button type="button" data-def="spot" aria-pressed="true">Spot</button>
+          <button type="button" data-def="dent" aria-pressed="false">Dent</button>
+          <button type="button" data-def="scratch" aria-pressed="false">Scratch</button>
+        </div>
+      </div>
+      <button type="button" class="btn" id="resample">New sample</button>
+    </div>
+    <div class="score">
+      <div><div class="big" id="auc">0.000</div><div class="lbl">pixel ROC-AUC on this image</div></div>
+      <div><div class="big" id="psnr">0.0</div><div class="lbl">PSNR in dB (image quality)</div></div>
+      <div class="lbl" style="max-width:34ch" id="verdict">&nbsp;</div>
+    </div>
+    <p class="fine">A small version of my Noisy Defect Detection project that runs in your browser. It learns a per-pixel z-score template from 30 defect-free synthetic surfaces and never sees a defect during training. The full project on GitHub also has a PatchCore-style detector, Wiener filtering and a pytest suite.</p>
+  </div>
+</section>
+
+<section id="projects" aria-labelledby="projects-h">
+  <div class="sec-head">
+    <h2 id="projects-h"><span class="idx">02 / projects</span>Projects</h2>
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="cv" aria-pressed="false">Computer vision</button>
+      <button type="button" data-f="llm" aria-pressed="false">LLM &amp; GenAI</button>
+      <button type="button" data-f="data" aria-pressed="false">Data science</button>
+      <button type="button" data-f="dl" aria-pressed="false">Deep learning</button>
+    </div>
+  </div>
+
+  <div class="projects" id="project-list">
+  <article class="project" data-tags="cv">
+    <div>
+      <h3>Noisy Defect Detection</h3>
+      <div class="meta"><span class="date">Oct 2026</span><span class="tag">Computer vision</span><a href="https://github.com/deeepiizz/noisy-defect-detection" target="_blank" rel="noopener">Code on GitHub</a></div>
+      <p class="headline">Median filtering raised pixel ROC-AUC from <strong class="num">0.86</strong> to <strong class="num">0.95</strong> at noise level 0.2.</p>
+      <ul>
+        <li>Finds scratches, cracks and dents while training only on defect-free images, as on an inspection line where labelled failures are rare.</li>
+        <li>Compares a PatchCore-style k-NN detector from the literature with a simple per-pixel z-score baseline.</li>
+        <li>Scores each filter twice: on image quality (PSNR, SSIM) and on detection (ROC-AUC).</li>
+      </ul>
+      <details><summary>The surprise</summary><p>The Wiener filter made the cleanest-looking images (best PSNR) but gave weaker detection than the median filter. A cleaner image was not a better input for the model. You can see the same effect in the demo above.</p></details>
+      <div class="stack">Python, SciPy, NumPy, pytest</div>
+    </div>
+    <div class="aside">
+      <div class="chart">
+        <svg id="noise-chart" class="draw" viewBox="0 0 560 300" role="img" aria-label="Pixel ROC-AUC against Gaussian noise level for four configurations"></svg>
+        <div class="legend">
+          <span><i style="background:var(--base)"></i>z-score baseline</span>
+          <span><i style="background:var(--muted)"></i>PatchKNN, no filter</span>
+          <span><i style="background:var(--accent)"></i>PatchKNN + median</span>
+          <span><i style="background:var(--good)"></i>PatchKNN + Wiener</span>
+        </div>
+      </div>
+      <p class="note">On this synthetic data the simple z-score baseline stayed at 0.99 or higher at every noise level. My next step is to test both detectors on real MVTec AD images, which the code already loads.</p>
+    </div>
+  </article>
+
+  <article class="project" data-tags="llm">
+    <div>
+      <h3>InterviewIQ</h3>
+      <div class="meta"><span class="date">Mar - Jun 2026</span><span class="tag">LLM &amp; GenAI</span><a href="https://interviewiq-seven.vercel.app" target="_blank" rel="noopener">Live demo</a><a href="https://github.com/deeepiizz/interviewiq" target="_blank" rel="noopener">Code</a></div>
+      <p class="headline">Upload your resume, ask an interview question, and get an answer that only uses your real experience.</p>
+      <ul>
+        <li>RAG pipeline: PDF parsing, chunking, embeddings and FAISS retrieval for Llama 3.3 70B, with prompt rules that forbid invented facts.</li>
+        <li>Two modes: a fast single-call answer, or three agents (Researcher, Writer, Critic) built as LangChain prompt chains.</li>
+        <li>FastAPI backend on Render, React and Tailwind frontend on Vercel. I built every part myself.</li>
+      </ul>
+      <details><summary>What I measured</summary><p>I ran both modes on 8 standard interview questions and tracked the runs in MLflow. The agents took 7.4 seconds per answer, the single call 3.2. The Critic gave an average of 8.9 out of 10, but I don't lean on that number, because the same model grades its own answers.</p></details>
+      <div class="stack">Python, LangChain, FAISS, FastAPI, React, MLflow</div>
+    </div>
+    <div class="aside">
+      <div class="stats">
+        <div class="stat"><div class="n">3.2 s</div><div class="t">single-call answer</div></div>
+        <div class="stat"><div class="n">7.4 s</div><div class="t">three-agent answer</div></div>
+        <div class="stat"><div class="n">8</div><div class="t">test questions, tracked in MLflow</div></div>
+      </div>
+      <p class="note">First answer after a pause can take about 30 seconds while the free server wakes up.</p>
+    </div>
+  </article>
+
+  <article class="project" data-tags="data">
+    <div>
+      <h3>F1 Podium Predictor</h3>
+      <div class="meta"><span class="date">Jul 2026</span><span class="tag">Data science</span><a href="https://github.com/deeepiizz/f1-podium-predictor" target="_blank" rel="noopener">Code on GitHub</a></div>
+      <p class="headline">No model beat the simple baseline on F1 <strong class="num">(0.701)</strong>. I wrote that down instead of hiding it.</p>
+      <ul>
+        <li>Built a 3,458-row dataset from an external API, with pagination and rate-limit handling.</li>
+        <li>Wrote an automated test that fails if the data pipeline leaks future information.</li>
+        <li>Compared logistic regression, random forest and XGBoost with temporal cross-validation and metrics for imbalanced classes.</li>
+      </ul>
+      <details><summary>What still worked</summary><p>The random forest improved PR-AUC from 0.687 to 0.706, so it ranks podium finishers a little better even though its F1 does not beat the baseline. SHAP also showed me that one feature was confounded.</p></details>
+      <div class="stack">Python, pandas, scikit-learn, XGBoost, SHAP, pytest</div>
+    </div>
+    <div class="aside">
+      <div class="stats">
+        <div class="stat"><div class="n">3,458</div><div class="t">rows collected</div></div>
+        <div class="stat"><div class="n">0.701</div><div class="t">baseline F1, not beaten</div></div>
+        <div class="stat"><div class="n">0.706</div><div class="t">best PR-AUC</div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="project" data-tags="dl">
+    <div>
+      <h3>Inside a Neural Network</h3>
+      <div class="meta"><span class="date">Oct 2025 - Feb 2026</span><span class="tag">Deep learning</span><span class="tag">M.Sc. project</span><a href="https://github.com/deeepiizz/ANN-Internal-Analysis" target="_blank" rel="noopener">Code on GitHub</a></div>
+      <p class="headline">I removed the 50 largest weights from a trained CNN. Accuracy changed by only <strong class="num">0.03</strong> percentage points.</p>
+      <ul>
+        <li>Trained a CNN in PyTorch to 98.98% test accuracy on MNIST.</li>
+        <li>Built a reusable framework with forward hooks that records every layer's activations.</li>
+        <li>Ran controlled ablations on 64 convolutional channels and 128 neurons across 10,000 test images.</li>
+      </ul>
+      <details><summary>Why it matters</summary><p>Big weights look important, but the ablations showed that weight magnitude is a poor proxy for how much a part of the network actually contributes to its decisions.</p></details>
+      <div class="stack">PyTorch, torchvision, NumPy, Matplotlib</div>
+    </div>
+    <div class="aside">
+      <div class="stats">
+        <div class="stat"><div class="n">98.98%</div><div class="t">test accuracy</div></div>
+        <div class="stat"><div class="n">192</div><div class="t">channels and neurons tested</div></div>
+        <div class="stat"><div class="n">10,000</div><div class="t">images per test</div></div>
+      </div>
+    </div>
+  </article>
+  </div>
+</section>
+
+<section id="background" aria-labelledby="bg-h">
+  <div class="sec-head"><h2 id="bg-h"><span class="idx">03 / background</span>How I got here</h2></div>
+  <div class="two">
+    <div>
+      <div class="col-title">Studies</div>
+      <div class="item">
+        <div class="top"><b>M.Sc. Machine Learning and Data Analytics</b><span class="when">Mar 2025 - Aug 2027</span></div>
+        <span class="muted">Hochschule Aalen, Germany</span>
+        <p>Deep learning, model interpretability and NLP.</p>
+      </div>
+      <div class="item">
+        <div class="top"><b>Bachelor of Computer Applications</b><span class="when">Sep 2020 - Aug 2023</span></div>
+        <span class="muted">Dayananda Sagar University, Bengaluru</span>
+        <p>CGPA 8.8/10. Programming, data structures and databases.</p>
+      </div>
+    </div>
+    <div>
+      <div class="col-title">Work and the year in between</div>
+      <div class="item">
+        <div class="top"><b>ICT Technician, Lenovo</b><span class="when">Jul 2024 - Mar 2025</span></div>
+        <span class="muted">Bengaluru, India</span>
+        <p>Troubleshot the software layer of client devices: operating-system errors, driver issues, BIOS configuration and firmware problems. Traced each fault to its root cause before changing anything, documented every fix and explained it to non-technical users.</p>
+      </div>
+      <div class="item">
+        <div class="top"><b>Getting ready for Germany</b><span class="when">Sep 2023 - Jun 2024</span></div>
+        <p>APS, IELTS, my first German classes, and teaching myself pandas, regression and decision trees.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" aria-labelledby="sk-h">
+  <div class="sec-head"><h2 id="sk-h"><span class="idx">04 / stack</span>What I work with</h2><p class="muted">Every item here is used in one of the projects above.</p></div>
+  <div class="skills">
+    <div><span class="k">Machine learning</span><span class="v">PyTorch, CNNs, scikit-learn, XGBoost, anomaly detection, cross-validation, ablations, SHAP</span></div>
+    <div><span class="k">Computer vision</span><span class="v">Denoising, noise simulation, synthetic data, thresholding, morphology, segmentation</span></div>
+    <div><span class="k">LLM applications</span><span class="v">LangChain, RAG, FAISS vector search, multi-agent pipelines</span></div>
+    <div><span class="k">Evaluation</span><span class="v">Precision, recall, F1, ROC-AUC, PR-AUC, PSNR, SSIM, leakage tests</span></div>
+    <div><span class="k">Engineering</span><span class="v">Python, Java, React, FastAPI, Git, pytest, MLflow, SQL, Render, Vercel</span></div>
+    <div><span class="k">Certificates</span><span class="v">IBM Introduction to LLMs, Infosys Full Stack &amp; NLP, Great Learning, Oracle, CompTIA IT Fundamentals, IBM Cybersecurity</span></div>
+  </div>
+</section>
+
+<section id="contact" aria-labelledby="ct-h">
+  <div class="contact">
+    <div>
+      <h2 id="ct-h"><span class="idx">05 / contact</span>Let's talk</h2>
+      <p class="muted" style="margin-top:8px">I can start right away and I'm happy to walk you through any project on a short call.</p>
+      <div class="mail" id="mail">deepika80394@gmail.com</div>
+      <div class="num muted" style="margin-top:4px">+49 176 68458437</div>
+    </div>
+    <button class="btn primary" id="copy-mail" type="button">Copy email</button>
+  </div>
+</section>
+
+<footer>Made by Deepika in Aalen. The demo and chart use the numbers from my own project results.</footer>
+</div>
+
+<script>
+(function(){
+  /* ---------- Results chart (from results.csv of noisy-defect-detection) ---------- */
+  var data=[
+    {c:"var(--base)",dash:"5 4",v:[.999,.999,.999,.993]},
+    {c:"var(--muted)",dash:"",v:[.987,.984,.973,.864]},
+    {c:"var(--accent)",dash:"",v:[.987,.985,.980,.950]},
+    {c:"var(--good)",dash:"",v:[.986,.985,.983,.931]}];
+  var xs=[0,.05,.1,.2],L=58,R=530,T=20,B=250,ymin=.85,ymax=1;
+  function X(n){return L+n/.2*(R-L)} function Y(v){return B-(v-ymin)/(ymax-ymin)*(B-T)}
+  var s='';
+  [.85,.9,.95,1].forEach(function(t){
+    s+='<line x1="'+L+'" x2="'+R+'" y1="'+Y(t)+'" y2="'+Y(t)+'" style="stroke:var(--line)"/>';
+    s+='<text x="'+(L-10)+'" y="'+(Y(t)+4)+'" text-anchor="end" font-size="12" style="font-family:var(--mono);fill:var(--muted)">'+t.toFixed(2)+'</text>';});
+  xs.forEach(function(n){s+='<text x="'+X(n)+'" y="'+(B+20)+'" text-anchor="middle" font-size="12" style="font-family:var(--mono);fill:var(--muted)">'+n+'</text>';});
+  s+='<text x="'+((L+R)/2)+'" y="'+(B+42)+'" text-anchor="middle" font-size="12" style="fill:var(--muted)">Gaussian noise level</text>';
+  s+='<text x="'+L+'" y="12" font-size="12" style="fill:var(--muted)">pixel ROC-AUC</text>';
+  data.forEach(function(d){
+    s+='<polyline points="'+d.v.map(function(v,i){return X(xs[i])+','+Y(v)}).join(' ')+'" stroke-width="2.5" stroke-linejoin="round" style="fill:none;stroke:'+d.c+'"'+(d.dash?' class="dashed" stroke-dasharray="'+d.dash+'"':'')+'/>';
+    d.v.forEach(function(v,i){s+='<circle cx="'+X(xs[i])+'" cy="'+Y(v)+'" r="3.5" style="fill:'+d.c+'"/>'});});
+  s+='<text x="'+(X(.2)-8)+'" y="'+(Y(.95)+4)+'" text-anchor="end" font-size="12" style="font-family:var(--mono);fill:var(--accent)">0.950</text>';
+  s+='<text x="'+(X(.2)-8)+'" y="'+(Y(.864)+4)+'" text-anchor="end" font-size="12" style="font-family:var(--mono);fill:var(--muted)">0.864</text>';
+  document.getElementById('noise-chart').innerHTML=s;
+
+  /* ---------- Live demo: z-score defect detector ---------- */
+  var N=96, TRAIN=30, seed=7, noise=0.10, useMedian=false, defect='spot';
+  function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  function gauss(r){var u=1-r(),v=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+  function surface(r){ // wavy brushed-metal texture with a little natural variation
+    var a=new Float32Array(N*N),ph=r()*0.4;
+    for(var y=0;y<N;y++)for(var x=0;x<N;x++){
+      a[y*N+x]=0.5+0.16*Math.sin(2*Math.PI*(y/9+0.18*Math.sin(x/13+ph)))+0.02*gauss(r);}
+    return a;}
+  function addNoise(a,r,sd){var b=new Float32Array(a.length);for(var i=0;i<a.length;i++)b[i]=a[i]+sd*gauss(r);return b}
+  function median(a){var b=new Float32Array(a.length),w=new Float32Array(9);
+    for(var y=0;y<N;y++)for(var x=0;x<N;x++){var k=0;
+      for(var dy=-1;dy<=1;dy++)for(var dx=-1;dx<=1;dx++){var yy=Math.min(N-1,Math.max(0,y+dy)),xx=Math.min(N-1,Math.max(0,x+dx));w[k++]=a[yy*N+xx];}
+      w.sort();b[y*N+x]=w[4];}
+    return b;}
+  function makeDefect(r,type){var m=new Uint8Array(N*N),cx=18+r()*60,cy=18+r()*60;
+    if(type==='scratch'){var x0=12+r()*20,y0=14+r()*20,x1=60+r()*24,y1=50+r()*36;
+      for(var t=0;t<=1;t+=0.002){var px=x0+(x1-x0)*t,py=y0+(y1-y0)*t+6*Math.sin(t*6);
+        for(var dy=-1;dy<=1;dy++)for(var dx=-1;dx<=1;dx++){var X2=Math.round(px+dx),Y2=Math.round(py+dy);if(X2>=0&&X2<N&&Y2>=0&&Y2<N&&dx*dx+dy*dy<=1)m[Y2*N+X2]=1;}}}
+    else{var rad=type==='dent'?7:6;for(var y=0;y<N;y++)for(var x=0;x<N;x++)if((x-cx)*(x-cx)+(y-cy)*(y-cy)<=rad*rad)m[y*N+x]=1;}
+    return m;}
+  function auc(score,mask){var idx=new Array(score.length);for(var i=0;i<idx.length;i++)idx[i]=i;
+    idx.sort(function(a,b){return score[a]-score[b]});var pos=0,neg=0,rank=0;
+    for(var j=0;j<idx.length;j++){if(mask[idx[j]]){pos++;rank+=j+1}else neg++}
+    return pos&&neg?(rank-pos*(pos+1)/2)/(pos*neg):0;}
+  function psnr(a,b){var m=0;for(var i=0;i<a.length;i++){var d=a[i]-b[i];m+=d*d}m/=a.length;return 10*Math.log10(1/Math.max(m,1e-12))}
+  function draw(id,f){var c=document.getElementById(id),ctx=c.getContext('2d'),img=ctx.createImageData(N,N);
+    for(var i=0;i<N*N;i++){var p=f(i);img.data[i*4]=p[0];img.data[i*4+1]=p[1];img.data[i*4+2]=p[2];img.data[i*4+3]=255}ctx.putImageData(img,0,0);}
+  function heat(t){t=Math.max(0,Math.min(1,t)); // dark blue -> cyan -> yellow -> red
+    var stops=[[20,30,90],[30,150,200],[245,215,60],[220,40,40]],k=t*3,i=Math.min(2,Math.floor(k)),f=k-i,a=stops[i],b=stops[i+1];
+    return[a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,a[2]+(b[2]-a[2])*f];}
+  function run(){
+    var r=rng(seed),prep=function(x){return useMedian?median(x):x};
+    // learn a template from defect-free surfaces seen through the same camera and filter
+    var mean=new Float32Array(N*N),sq=new Float32Array(N*N);
+    for(var k=0;k<TRAIN;k++){var s1=prep(addNoise(surface(r),r,noise));for(var i=0;i<N*N;i++){mean[i]+=s1[i];sq[i]+=s1[i]*s1[i]}}
+    var sd=new Float32Array(N*N);for(i=0;i<N*N;i++){mean[i]/=TRAIN;sd[i]=Math.sqrt(Math.max(sq[i]/TRAIN-mean[i]*mean[i],1e-6))}
+    // test image with one defect
+    var clean=surface(r),mask=makeDefect(r,defect),amp=defect==='dent'?0.32:-0.32;
+    for(i=0;i<N*N;i++)if(mask[i])clean[i]+=amp;
+    var noisy=addNoise(clean,r,noise),seen=prep(noisy),z=new Float32Array(N*N);
+    for(i=0;i<N*N;i++)z[i]=Math.abs(seen[i]-mean[i])/sd[i];
+    draw('c-in',function(i){var v=Math.max(0,Math.min(1,noisy[i]))*255;return[v,v,v]});
+    draw('c-gt',function(i){var v=mask[i]?255:0;return[v,v,v]});
+    draw('c-map',function(i){return heat(z[i]/6)});
+    var a=auc(z,mask),p=psnr(seen,clean);
+    document.getElementById('auc').textContent=a.toFixed(3);
+    document.getElementById('psnr').textContent=p>60?'max':p.toFixed(1);
+    document.getElementById('noise-val').textContent=noise.toFixed(2);
+    document.getElementById('verdict').textContent=a>0.97?'Defect found cleanly.':a>0.9?'Still finds it, with some false alarms.':'The noise is winning. Try the median filter.';
+  }
+  var pending=false;function schedule(){if(pending)return;pending=true;requestAnimationFrame(function(){pending=false;run()})}
+  document.getElementById('noise').addEventListener('input',function(e){noise=parseFloat(e.target.value);schedule()});
+  function setFilter(on){useMedian=on;document.getElementById('f-on').setAttribute('aria-pressed',on);document.getElementById('f-off').setAttribute('aria-pressed',!on);schedule()}
+  document.getElementById('f-on').addEventListener('click',function(){setFilter(true)});
+  document.getElementById('f-off').addEventListener('click',function(){setFilter(false)});
+  document.querySelectorAll('[data-def]').forEach(function(b){b.addEventListener('click',function(){
+    defect=b.getAttribute('data-def');document.querySelectorAll('[data-def]').forEach(function(o){o.setAttribute('aria-pressed',o===b)});schedule()})});
+  document.getElementById('resample').addEventListener('click',function(){seed=(Math.random()*1e9)|0;schedule()});
+  run();
+
+  /* ---------- Project filter ---------- */
+  var fbtns=document.querySelectorAll('[data-f]'),items=document.querySelectorAll('#project-list .project');
+  fbtns.forEach(function(b){b.addEventListener('click',function(){var f=b.getAttribute('data-f');
+    fbtns.forEach(function(o){o.setAttribute('aria-pressed',o===b)});
+    items.forEach(function(it){it.hidden=!(f==='all'||it.getAttribute('data-tags').indexOf(f)>-1);it.classList.remove('enter');void it.offsetWidth;if(!it.hidden)it.classList.add('enter')});});});
+
+  /* ---------- Name decode on hover ---------- */
+  var nameEl=document.getElementById('name'),real=nameEl.textContent,glyphs='01<>/{}[]#=+*';
+  var calm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches,busy=false;
+  function decode(){if(calm||busy)return;busy=true;var f=0,tot=18;
+    (function step(){nameEl.textContent=real.split('').map(function(ch,i){if(ch===' ')return ' ';return i<f/tot*real.length?ch:glyphs[(Math.random()*glyphs.length)|0]}).join('');
+      if(f++<tot)requestAnimationFrame(step);else{nameEl.textContent=real;busy=false}})();}
+  nameEl.addEventListener('mouseenter',decode);
+  /* ---------- Copy email ---------- */
+  var btn=document.getElementById('copy-mail'),mail=document.getElementById('mail');
+  btn.addEventListener('click',function(){var text=mail.textContent.trim();
+    function fallback(){var rg=document.createRange();rg.selectNodeContents(mail);var sel=window.getSelection();sel.removeAllRanges();sel.addRange(rg);btn.textContent='Selected, press Ctrl+C'}
+    try{navigator.clipboard.writeText(text).then(function(){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy email'},1800)},fallback)}catch(e){fallback()}});
+})();
+</script>
+
+</body>
+</html>
