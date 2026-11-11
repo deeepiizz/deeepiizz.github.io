@@ -85,6 +85,7 @@ section{border-top:1px solid var(--line);padding-block:56px}
 .filters button[aria-pressed=true]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
 .project{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px;padding-block:32px;border-top:1px dashed var(--line)}
 .projects .project:first-child{border-top:0}
+.project[hidden]{display:none}
 .project h3{font-size:24px;font-weight:600}
 .project .meta{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 0 14px;font-size:14px}
 .project .meta .date{color:var(--muted)}
@@ -232,6 +233,7 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
       <button type="button" data-f="llm" aria-pressed="false">LLM &amp; GenAI</button>
       <button type="button" data-f="data" aria-pressed="false">Data science</button>
       <button type="button" data-f="dl" aria-pressed="false">Deep learning</button>
+      <button type="button" data-f="auto" aria-pressed="false">Automation</button>
     </div>
   </div>
 
@@ -260,6 +262,29 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
         </div>
       </div>
       <p class="note">On this synthetic data the simple z-score baseline stayed at 0.99 or higher at every noise level. My next step is to test both detectors on real MVTec AD images, which the code already loads.</p>
+    </div>
+  </article>
+
+  <article class="project" data-tags="auto llm">
+    <div>
+      <h3>LeaveBuddy</h3>
+      <div class="meta"><span class="date">Nov 2026</span><span class="tag">Automation</span><a href="https://github.com/deeepiizz/leave-request-agent" target="_blank" rel="noopener">Code on GitHub</a></div>
+      <p class="headline">An employee types <em>"I want 2 days off next week"</em> in Teams, and the request reaches their manager as an approval.</p>
+      <ul>
+        <li>Copilot Studio agent with two topics: one collects and checks leave type, dates, days and reason before asking for confirmation, the other lists the employee's latest requests.</li>
+        <li>A Power Automate flow saves each request to a SharePoint list, finds the manager in Entra ID and starts a Teams approval.</li>
+        <li>When the manager answers, the list is updated and the employee gets the result as a Teams message.</li>
+      </ul>
+      <details><summary>The design problem</summary><p>Copilot Studio waits only about 100 seconds for a flow, but a manager can take days. So the flow answers the agent straight away with a request number, keeps running in the background while it waits for the approval, and sends the result to the employee later as a separate Teams message.</p></details>
+      <div class="stack">Copilot Studio, Power Automate, Power Fx, SharePoint, Microsoft Teams</div>
+    </div>
+    <div class="aside">
+      <div class="stats">
+        <div class="stat"><div class="n">2</div><div class="t">topics, each calling its own flow</div></div>
+        <div class="stat"><div class="n">4</div><div class="t">standard connectors, no premium license</div></div>
+        <div class="stat"><div class="n">11</div><div class="t">test cases in the test plan</div></div>
+      </div>
+      <p class="note">The repo has the topic YAML, flow definitions, a SharePoint provisioning script and a setup guide to rebuild it in any Microsoft 365 tenant.</p>
     </div>
   </article>
 
@@ -369,6 +394,7 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
     <div><span class="k">Machine learning</span><span class="v">PyTorch, CNNs, scikit-learn, XGBoost, anomaly detection, cross-validation, ablations, SHAP</span></div>
     <div><span class="k">Computer vision</span><span class="v">Denoising, noise simulation, synthetic data, thresholding, morphology, segmentation</span></div>
     <div><span class="k">LLM applications</span><span class="v">LangChain, RAG, FAISS vector search, multi-agent pipelines</span></div>
+    <div><span class="k">Low-code automation</span><span class="v">Microsoft Copilot Studio, Power Automate, Power Fx, SharePoint lists, Teams approvals</span></div>
     <div><span class="k">Evaluation</span><span class="v">Precision, recall, F1, ROC-AUC, PR-AUC, PSNR, SSIM, leakage tests</span></div>
     <div><span class="k">Engineering</span><span class="v">Python, Java, React, FastAPI, Git, pytest, MLflow, SQL, Render, Vercel</span></div>
     <div><span class="k">Certificates</span><span class="v">IBM Introduction to LLMs, Infosys Full Stack &amp; NLP, Great Learning, Oracle, CompTIA IT Fundamentals, IBM Cybersecurity</span></div>
