@@ -238,6 +238,29 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
   </div>
 
   <div class="projects" id="project-list">
+  <article class="project" data-tags="data">
+    <div>
+      <h3>Spatial Experience Dataset Curator</h3>
+      <div class="meta"><span class="date">Nov 2026</span><span class="tag">Data science</span><a href="https://github.com/deeepiizz/spatial-experience-dataset-curator" target="_blank" rel="noopener">Code on GitHub</a></div>
+      <p class="headline">Four open studies of how people find their way through spaces, and rate them, combined into one table of <strong class="num">6,513</strong> trials.</p>
+      <ul>
+        <li>Collected CC-BY datasets from Zenodo: a real library, two VR navigation experiments and street-safety ratings from Athens. I checked each licence before using it.</li>
+        <li>Defined one schema for every trial: participant, age group, environment, task, condition, time, errors, rating, plus spatial features and the source's DOI and licence on every row.</li>
+        <li>Wrote a Python pipeline that downloads each source, checks it against Zenodo's md5, maps it and validates it. 43 pytest tests check every mapping against the raw files.</li>
+      </ul>
+      <details><summary>What the checks found</summary><p>One README's age codes contradicted the data's own "under 30" flag, so I mapped them one step down and wrote a test that compares them with that flag. The same source had 122 respondents, not the 129 its description gives. A library dataset marked 33 searches as successful while recording the wrong rack, side and shelf. All of it is written up in the data card, including what the combined data cannot be used for.</p></details>
+      <div class="stack">Python, pandas, pytest, GitHub Actions, YAML</div>
+    </div>
+    <div class="aside">
+      <div class="stats">
+        <div class="stat"><div class="n">6,513</div><div class="t">trials, 303 participants</div></div>
+        <div class="stat"><div class="n">4</div><div class="t">open datasets, one schema</div></div>
+        <div class="stat"><div class="n">43</div><div class="t">pytest checks, run in CI</div></div>
+      </div>
+      <p class="note">The test style comes from my F1 leakage test. Corrupt one source on purpose, rebuild, and check that rows from every other source stay byte-for-byte identical.</p>
+    </div>
+  </article>
+
   <article class="project" data-tags="cv">
     <div>
       <h3>Noisy Defect Detection</h3>
@@ -396,7 +419,8 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
     <div><span class="k">LLM applications</span><span class="v">LangChain, RAG, FAISS vector search, multi-agent pipelines</span></div>
     <div><span class="k">Low-code automation</span><span class="v">Microsoft Copilot Studio, Power Automate, Power Fx, SharePoint lists, Teams approvals</span></div>
     <div><span class="k">Evaluation</span><span class="v">Precision, recall, F1, ROC-AUC, PR-AUC, PSNR, SSIM, leakage tests</span></div>
-    <div><span class="k">Engineering</span><span class="v">Python, Java, React, FastAPI, Git, pytest, MLflow, SQL, Render, Vercel</span></div>
+    <div><span class="k">Data curation</span><span class="v">Open-access datasets (Zenodo), licence checks, common schemas, metadata and provenance, data cards, trial-level data</span></div>
+    <div><span class="k">Engineering</span><span class="v">Python, Java, React, FastAPI, Git, GitHub Actions, pytest, MLflow, SQL, Render, Vercel</span></div>
     <div><span class="k">Certificates</span><span class="v">IBM Introduction to LLMs, Infosys Full Stack &amp; NLP, Great Learning, Oracle, CompTIA IT Fundamentals, IBM Cybersecurity</span></div>
   </div>
 </section>
