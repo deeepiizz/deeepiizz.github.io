@@ -246,7 +246,7 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
       <ul>
         <li>Collected CC-BY datasets from Zenodo: a real library, two VR navigation experiments and street-safety ratings from Athens. I checked each licence before using it.</li>
         <li>Defined one schema for every trial: participant, age group, environment, task, condition, time, errors, rating, plus spatial features and the source's DOI and licence on every row.</li>
-        <li>Wrote a Python pipeline that downloads each source, checks it against Zenodo's md5, maps it and validates it. 43 pytest tests check every mapping against the raw files.</li>
+        <li>Wrote a Python pipeline that downloads each source, checks it against Zenodo's md5, maps it and validates it. 45 pytest tests check every mapping against the raw files.</li>
       </ul>
       <details><summary>What the checks found</summary><p>One README's age codes contradicted the data's own "under 30" flag, so I mapped them one step down and wrote a test that compares them with that flag. The same source had 122 respondents, not the 129 its description gives. A library dataset marked 33 searches as successful while recording the wrong rack, side and shelf. All of it is written up in the data card, including what the combined data cannot be used for.</p></details>
       <div class="stack">Python, pandas, pytest, GitHub Actions, YAML</div>
@@ -255,7 +255,7 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
       <div class="stats">
         <div class="stat"><div class="n">6,513</div><div class="t">trials, 303 participants</div></div>
         <div class="stat"><div class="n">4</div><div class="t">open datasets, one schema</div></div>
-        <div class="stat"><div class="n">43</div><div class="t">pytest checks, run in CI</div></div>
+        <div class="stat"><div class="n">45</div><div class="t">pytest checks, run in CI</div></div>
       </div>
       <p class="note">The test style comes from my F1 leakage test. Corrupt one source on purpose, rebuild, and check that rows from every other source stay byte-for-byte identical.</p>
     </div>
